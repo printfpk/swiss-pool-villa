@@ -1,0 +1,77 @@
+import React from "react";
+import { Fade, Slide, FlipText, DislocateText } from "./pretext";
+import { Search } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function Hero() {
+
+  return (
+    <section className="relative h-screen flex items-center justify-start overflow-hidden px-6 md:px-24">
+      <video
+        src="https://ik.imagekit.io/printf/swissvilla/swissvideo.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* Vertical Side Text */}
+      <div className="absolute left-[-60px] md:left-[-80px] top-1/2 -translate-y-1/2 -rotate-90 z-20 text-white origin-center">
+        <Slide direction="up" delay={0.2}>
+          <span className="block opacity-80 text-xs font-['Montserrat'] tracking-[0.4em] uppercase font-bold drop-shadow-lg whitespace-nowrap">
+            <DislocateText>Private Sanctuary</DislocateText>
+          </span>
+        </Slide>
+      </div>
+
+      <div className="relative text-left text-white z-10 p-0 w-full md:-mt-16 lg:-mt-24 md:pl-16">
+
+        <div className="headings mt-2 sm:mt-5 lg:mt-8">
+          {["Experience", "Luxury", "Beyond", "Imagination"].map((item, index, array) => {
+            const previousCharsCount = array.slice(0, index).join("").length;
+            return (
+              <p key={index} className={`text-4xl sm:text-5xl lg:text-7xl xl:text-[7rem] tracking-tighter py-2 sm:py-3 -mt-1 sm:-mt-3 lg:-mt-4 leading-none font-light overflow-hidden ${item === "Experience" || item === "Beyond" ? "opacity-50" : ""}`}>
+                {item.split("").map((char, charIndex) => (
+                  <motion.span
+                    key={charIndex}
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      ease: [0.22, 1, 0.36, 1],
+                      duration: 0.6,
+                      delay: 0.2 + (previousCharsCount + charIndex) * 0.04,
+                    }}
+                    className="inline-block"
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </p>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Floating Search Bar at Bottom */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 px-4 md:bottom-16 text-white w-full">
+        <Slide direction="up" delay={0.5}>
+          <div className="flex justify-center">
+            <div className="flex items-center shadow-2xl rounded-full border border-white/30 bg-white/10 backdrop-blur-md p-2 transition hover:bg-white/20">
+              <button className="px-6 py-2 text-sm font-medium border-r border-white/30 whitespace-nowrap">
+                <FlipText>Book Now</FlipText>
+              </button>
+              <button className="px-6 py-2 text-sm font-normal opacity-80 whitespace-nowrap">
+                <FlipText>Explore Villas</FlipText>
+              </button>
+              <div className="bg-[--color-brand] text-white p-3 rounded-full flex items-center justify-center ml-2 cursor-pointer hover:bg-[--color-primary] transition shrink-0">
+                <Search size={18} />
+              </div>
+            </div>
+          </div>
+        </Slide>
+      </div>
+    </section>
+  );
+}
