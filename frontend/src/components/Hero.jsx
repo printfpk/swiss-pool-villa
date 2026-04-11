@@ -55,17 +55,17 @@ export default function Hero() {
       </div>
 
       {/* Floating Search Bar at Bottom */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 px-4 md:bottom-16 text-white w-full">
+      <div className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-[100] px-4 text-white pointer-events-none">
         <Slide direction="up" delay={0.5}>
-          <div className="flex justify-center">
-            <div className="flex items-center shadow-2xl rounded-full border border-white/30 bg-white/10 backdrop-blur-md p-2 transition hover:bg-white/20">
-              <button className="px-6 py-2 text-sm font-medium border-r border-white/30 whitespace-nowrap">
+          <div className="flex justify-center pointer-events-auto">
+            <div className="flex items-center shadow-2xl rounded-full border border-white/30 bg-black/40 backdrop-blur-xl p-2 transition duration-300 hover:bg-black/60">
+              <button className="px-6 py-2 text-sm font-medium border-r border-white/30 whitespace-nowrap hover:text-[#eeb992] transition-colors">
                 <FlipText>Book Now</FlipText>
               </button>
-              <button className="px-6 py-2 text-sm font-normal opacity-80 whitespace-nowrap">
+              <button className="px-6 py-2 text-sm font-normal opacity-90 whitespace-nowrap hover:text-[#eeb992] transition-colors">
                 <FlipText>Explore Villas</FlipText>
               </button>
-              <div className="bg-[--color-brand] text-white p-3 rounded-full flex items-center justify-center ml-2 cursor-pointer hover:bg-[--color-primary] transition shrink-0">
+              <div className="bg-gradient-to-br from-[#eeb992] to-[#e6a87c] text-white p-3 rounded-full flex items-center justify-center ml-2 cursor-pointer shadow-lg hover:scale-105 transition-all shrink-0">
                 <Search size={18} />
               </div>
             </div>

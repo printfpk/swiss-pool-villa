@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <header className={\`fixed top-0 w-full z-50 transition-all duration-300 px-6 md:px-12 py-4 flex justify-between items-center \${isScrolled ? 'bg-white shadow-md text-[--color-text-main]' : 'bg-transparent text-white'}\`}>
       <div className={\`font-bold text-2xl tracking-tighter cursor-pointer flex gap-2 items-center \${isScrolled ? 'text-[--color-brand]' : 'text-white'}\`}>
-        <Globe /> AirbnbLuxury
+        <Globe /> Swisspoolvilla
       </div>
       
       <div className={\`hidden md:flex items-center shadow-sm rounded-full border p-2 transition \${isScrolled ? 'border-gray-200 bg-white' : 'border-white/30 bg-white/10 backdrop-blur-md'}\`}>
@@ -33,7 +33,7 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-4 text-sm font-medium">
-        <button className="hidden sm:block hover:bg-black/5 px-4 py-2 rounded-full transition-colors">Airbnb your home</button>
+        <button className="hidden sm:block hover:bg-black/5 px-4 py-2 rounded-full transition-colors">swisspoolvilla your home</button>
         <div className={\`flex items-center gap-3 p-2 rounded-full cursor-pointer transition border \${isScrolled ? 'border-gray-200 hover:shadow-md' : 'border-white/30 hover:bg-white/10'}\`}>
             <Menu size={16} />
             <div className="bg-gray-500 text-white rounded-full p-1">
@@ -385,7 +385,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="font-bold text-2xl tracking-tighter flex gap-2 items-center text-[--color-brand]">
-              <Globe /> AirbnbLuxury
+              <Globe /> Swisspoolvilla
             </div>
             <p className="text-[--color-text-muted]">Redefining luxury travel with unparalleled experiences and sustainable practices.</p>
           </div>

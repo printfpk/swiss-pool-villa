@@ -6,15 +6,33 @@ import { FlipText } from "./pretext";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Add background/shadow past 50px
+      setIsScrolled(currentScrollY > 50);
+
+      // Determine scroll direction to hide/show navbar
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // scrolling down
+      } else {
+        setIsVisible(true); // scrolling up
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 px-6 md:px-12 py-4 flex justify-between items-center ${isScrolled ? 'bg-white shadow-md text-[--color-text-main]' : 'bg-transparent text-white'}`}>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-500 px-6 md:px-12 py-4 flex justify-between items-center ${isScrolled ? 'bg-white shadow-md text-[--color-text-main]' : 'bg-transparent text-white'} ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="cursor-pointer">
         <svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" className="h-16 md:h-20 w-auto">
           <defs>
