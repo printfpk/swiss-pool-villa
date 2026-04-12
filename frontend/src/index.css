@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap');
-
-
 @theme {
   --color-brand: #ff385c;
   --color-primary: #e00b41;
@@ -9,6 +6,47 @@
   --color-text-muted: #6a6a6a;
   --color-border: #c1c1c1;
   --color-background-surface: #f2f2f2;
+  --font-playfair: 'Playfair Display', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  src: url('./assets/1a99aca83e01f200.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  src: url('./assets/1ac6259d48e66f05.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-weight: 400;
+  src: url('./assets/a337741eda51b410.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-weight: 700;
+  src: url('./assets/be73ffe76f728c6f.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-weight: 900;
+  src: url('./assets/c65585c8cfece219.woff2') format('woff2');
+  font-display: swap;
+}
+
+@utility bg-gradient-features {
+  background: linear-gradient(135deg, #d5d4cf, #e0dfdb, #ebccc5, #edb891);
 }
 
 body {

@@ -10,7 +10,6 @@ export default function CustomCursor() {
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
-  const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -23,47 +22,39 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    const handleOver = (e) => {
-        if (e.target.closest("button, a, [role='button'], .cursor-pointer")) {
-            setIsHovering(true);
-        } else {
-            setIsHovering(false);
-        }
-    };
-
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
-    window.addEventListener("mouseover", handleOver);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
-      window.removeEventListener("mouseover", handleOver);
     };
   }, [isVisible]);
 
   return (
     <motion.div
-      className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] flex items-center justify-center shadow-xl"
+      className="fixed top-0 left-0 pointer-events-none z-[9999]"
       style={{
-        width: 60,
-        height: 60,
+        width: 10,
+        height: 10,
         x: cursorX,
         y: cursorY,
         translateX: "-50%",
         translateY: "-50%",
         opacity: isVisible ? 1 : 0,
-        scale: isHovering ? 0.15 : (isVisible ? 1 : 0),
+        transformStyle: "preserve-3d",
+        rotateX: -30,
+        rotateY: 45,
       }}
-      transition={{ type: "spring", damping: 20, stiffness: 250 }}
     >
-      {!isHovering && (
-        <span className="text-[9px] font-bold uppercase tracking-widest text-black">
-          Scroll
-        </span>
-      )}
+      <div className="absolute inset-0 bg-neutral-900 border border-black" style={{ transform: "translateZ(5px)" }} />
+      <div className="absolute inset-0 bg-neutral-900 border border-black" style={{ transform: "rotateY(180deg) translateZ(5px)" }} />
+      <div className="absolute inset-0 bg-neutral-800 border border-black" style={{ transform: "rotateY(-90deg) translateZ(5px)" }} />
+      <div className="absolute inset-0 bg-neutral-800 border border-black" style={{ transform: "rotateY(90deg) translateZ(5px)" }} />
+      <div className="absolute inset-0 bg-neutral-600 border border-black" style={{ transform: "rotateX(90deg) translateZ(5px)" }} />
+      <div className="absolute inset-0 bg-neutral-600 border border-black" style={{ transform: "rotateX(-90deg) translateZ(5px)" }} />
     </motion.div>
   );
 }

@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CustomCursor from "./components/CustomCursor";
 import About from "./components/About";
-import Showcase from "./components/Showcase";
+import ServicesHistory from "./components/ServicesHistory";
 import Villas from "./components/Villas";
 import Experiences from "./components/Experiences";
 import Gallery from "./components/Gallery";
@@ -19,7 +19,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
-      <Showcase />
+      <ServicesHistory />
       <Villas />
       <Experiences />
       <Gallery />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
@@ -117,7 +117,7 @@ const About = () => {
   };
 
   return (
-    <div id="catalog" className="relative py-16 lg:py-[5vw] bg-[#e2dedb]">
+    <div id="catalog" className="relative pt-16 pb-0 lg:pt-[5vw] lg:pb-0 bg-[#e2dedb]">
       <div className="container mx-auto max-w-[1440px] px-[1.5rem] lg:px-[6.875rem]">
         
         {/* Container background block mapping main-catalog__inner */}
@@ -164,7 +164,7 @@ const About = () => {
                 onClick={() => openModal(index)}
                 className="group relative text-[#fffce3] rounded-[1.25rem] block cursor-pointer"
               >
-                <div className="absolute top-0 left-0 w-full h-[60vw] lg:h-[33.3334vw] transition-[height] duration-500 group-hover:h-full after:content-[''] after:absolute after:inset-0 after:border-[2px] after:border-[#2b9705] after:rounded-[1.25rem] after:shadow-[0_0_1rem_0_#2b9705] after:pointer-events-none after:opacity-0 group-focus-visible:after:opacity-100">
+                <div className="absolute top-0 left-0 w-full h-[55vw] lg:h-[28vw] transition-[height] duration-500 group-hover:h-full after:content-[''] after:absolute after:inset-0 after:border-[2px] after:border-[#2b9705] after:rounded-[1.25rem] after:shadow-[0_0_1rem_0_#2b9705] after:pointer-events-none after:opacity-0 group-focus-visible:after:opacity-100">
                   <div className="absolute top-0 left-0 w-full h-full bg-[#78797e] rounded-[1.25rem] overflow-hidden will-change-transform">
                     <img 
                       src={service.img} 
@@ -174,14 +174,17 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="relative flex flex-col justify-end h-[60vw] lg:h-[33.3334vw] p-[1.875rem]">
+                <div className="relative flex flex-col justify-end h-[55vw] lg:h-[28vw] p-[1.875rem]">
                   <div className="relative text-[1rem] font-medium leading-[1.4] tracking-[.01rem] mb-[.75rem]">{service.category}</div>
                   <div className="relative text-[1.875rem] font-medium leading-[1.3]">{service.title}</div>
                 </div>
 
                 <div className="relative py-[2.1875rem] pt-[1.5rem] transition-[padding] duration-500 group-hover:px-[1.875rem]">
-                  <div className="group-hover:bg-[#1c1b1d] group-hover:text-[#fffce3] group-hover:border-[#1c1b1d] bg-[#e2dedb] text-[#1c1b1d] border border-[#1c1b1d] w-full flex items-center justify-center p-[1rem] rounded-full transition-all duration-500 pointer-events-none font-medium">
-                    <span>more details</span>
+                  <div className="relative group-hover:bg-[#1c1b1d] group-hover:text-[#fffce3] group-hover:border-[#1c1b1d] bg-[#e2dedb] text-[#1c1b1d] border border-[#1c1b1d] w-full flex items-center justify-center p-[1rem] rounded-full transition-all duration-500 pointer-events-none font-medium">
+                    <span className="transition-transform duration-500">more details</span>
+                    <ArrowUpRight 
+                      className="absolute right-5 w-5 h-5 opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0" 
+                    />
                   </div>
                 </div>
               </a>
@@ -203,12 +206,12 @@ const About = () => {
               className={`fixed top-[.375rem] bottom-[.375rem] flex flex-col p-[2.5rem_.75rem_2.5rem_7.5rem] transition-all duration-500 z-[101] pointer-events-auto opacity-100 left-1/2 md:left-[12.5vw] w-[95vw] md:w-[41.6667vw] -translate-x-1/2 md:translate-x-0 before:absolute before:bg-white before:top-0 before:left-0 before:w-full before:h-full before:rounded-[.625rem] before:-z-10`}
             >
               
-              <div className="absolute left-[-2.5rem] top-1/2 -translate-y-1/2 flex flex-col justify-center">
-                <div onClick={prevModal} className="relative bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center w-[2.5rem] h-[2.5rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer mb-[2.5rem] hover:scale-105 hover:shadow-lg">
-                  <ChevronLeft size={20} />
+              <div className="absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col gap-3 justify-center items-center bg-white p-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] border-4 border-white z-[110]">
+                <div onClick={prevModal} className="relative bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center w-[2.75rem] h-[2.75rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer hover:scale-105 hover:shadow-lg">
+                  <ChevronLeft size={24} />
                 </div>
-                <div onClick={nextModal} className="relative bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center w-[2.5rem] h-[2.5rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer hover:scale-105 hover:shadow-lg">
-                  <ChevronRight size={20} />
+                <div onClick={nextModal} className="relative bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center w-[2.75rem] h-[2.75rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer hover:scale-105 hover:shadow-lg">
+                  <ChevronRight size={24} />
                 </div>
               </div>
 
