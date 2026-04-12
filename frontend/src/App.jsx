@@ -4,9 +4,7 @@ import Hero from "./components/Hero";
 import CustomCursor from "./components/CustomCursor";
 import About from "./components/About";
 import ServicesHistory from "./components/ServicesHistory";
-import Villas from "./components/Villas";
-import Experiences from "./components/Experiences";
-import Gallery from "./components/Gallery";
+import PlayReel from "./components/PlayReel";
 import Testimonials from "./components/Testimonials";
 import Location from "./components/Location";
 import Booking from "./components/Booking";
@@ -20,9 +18,7 @@ export default function App() {
       <Hero />
       <About />
       <ServicesHistory />
-      <Villas />
-      <Experiences />
-      <Gallery />
+      <PlayReel />
       <Testimonials />
       <Location />
       <Booking />

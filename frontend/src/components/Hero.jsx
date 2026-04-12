@@ -35,9 +35,9 @@ export default function Hero() {
               <p 
                 key={index} 
                 className={`text-4xl sm:text-5xl lg:text-7xl xl:text-[7rem] tracking-tighter py-2 sm:py-3 -mt-1 sm:-mt-3 lg:-mt-4 leading-none overflow-hidden drop-shadow-md
-                  ${index === 0 ? "font-thin text-white/80" : ""}
-                  ${index === 1 ? "text-red-600 pb-4" : ""}
-                  ${index === 2 ? "font-bold text-white ml-2 sm:ml-4" : ""}
+                  ${index === 0 ? "font-thin text-white/30" : ""}
+                  ${index === 1 ? "font-semibold text-red-600 pb-4" : ""}
+                  ${index === 2 ? "font-light text-white ml-2 sm:ml-4" : ""}
                 `}
               >
                 {item.split("").map((char, charIndex) => (
@@ -59,6 +59,20 @@ export default function Hero() {
             );
           })}
         </div>
+
+        {/* Red line below "Breathes" */}
+        <motion.div
+          className="ml-2 sm:ml-4 mt-2"
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.9, delay: 1.1 }}
+          style={{ transformOrigin: 'left center' }}
+        >
+          <div
+            className="h-[3px] w-40 sm:w-64 lg:w-80 rounded-full"
+            style={{ background: 'linear-gradient(90deg, #e0003c 0%, #ff6b81 55%, transparent 100%)' }}
+          />
+        </motion.div>
       </div>
 
       {/* Floating Search Bar at Bottom */}
@@ -72,7 +86,7 @@ export default function Hero() {
               <button className="px-6 py-2 text-sm font-normal opacity-90 whitespace-nowrap hover:text-[#C9A646] transition-colors">
                 <FlipText>Explore Villas</FlipText>
               </button>
-              <div className="bg-gradient-to-br from-[#E8D8A8] via-[#C9A646] to-[#A8832F] text-black p-3 rounded-full flex items-center justify-center ml-2 cursor-pointer shadow-[0_0_15px_rgba(201,166,70,0.4)] hover:scale-105 transition-all shrink-0">
+              <div className="bg-gradient-to-br from-[#ff6b81] via-[#e0003c] to-[#b0002e] text-white p-3 rounded-full flex items-center justify-center ml-2 cursor-pointer hover:scale-105 transition-all shrink-0">
                 <Search size={18} />
               </div>
             </div>
