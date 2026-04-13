@@ -345,7 +345,7 @@ export default function PlayReel() {
       </div>
 
       {/* 3D Canvas */}
-      <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, touchAction: 'none' }}>
+      <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}>
         <Canvas
           camera={{ position: [0, 0.3, 7.5], fov: 42 }}
           gl={{ antialias: true }}
