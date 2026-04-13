@@ -18,7 +18,7 @@ export default function Testimonials() {
   const duplicatedReviews2 = [...reviews2, ...reviews2];
 
   return (
-    <section className="py-16 bg-black overflow-hidden relative border-t border-white/5">
+    <section id="testimonials" className="py-16 bg-black overflow-hidden relative border-t border-white/5">
       <style>
         {`
           @keyframes marquee {
@@ -42,33 +42,33 @@ export default function Testimonials() {
       </style>
 
       <Reveal>
-        <div className="text-center justify-center flex flex-col items-center mb-10 px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Loved by Guests</h2>
-          <p className="text-gray-400 max-w-2xl">Read what our distinguished visitors have to say about their stay at Swiss Pool Villa.</p>
+        <div className="text-center justify-center flex flex-col items-center mb-8 sm:mb-10 px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">Loved by Guests</h2>
+          <p className="text-sm sm:text-base text-gray-400 max-w-2xl">Read what our distinguished visitors have to say about their stay at Swiss Pool Villa.</p>
         </div>
       </Reveal>
 
       <div className="relative flex flex-col gap-6 w-full -rotate-1 md:-rotate-2 scale-[1.05]">
         {/* Track 1 */}
-        <div className="flex w-max animate-marquee gap-6">
+        <div className="flex w-max animate-marquee gap-4 sm:gap-6">
           {duplicatedReviews1.map((rev, i) => (
-            <div key={`t1-${i}`} className="w-[350px] md:w-[450px] flex-shrink-0 bg-[#0c0c0c] border border-[--color-border] rounded-2xl p-5 text-white text-left shadow-md hover:border-white/20 transition-colors">
-              <div className="flex items-center gap-3 mb-3">
-                <img src={`https://i.pravatar.cc/100?img=${(i % 10) + 10}`} alt={rev.name} className="w-10 h-10 rounded-full object-cover" />
+            <div key={`t1-${i}`} className="w-[240px] sm:w-[350px] md:w-[450px] h-[180px] sm:h-[220px] md:h-auto flex-shrink-0 bg-[#0c0c0c] border border-[--color-border] rounded-2xl p-4 sm:p-5 text-white text-left shadow-md hover:border-white/20 transition-colors overflow-hidden">
+              <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                <img src={`https://i.pravatar.cc/100?img=${(i % 10) + 10}`} alt={rev.name} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover" />
                 <div>
-                  <h4 className="font-semibold">{rev.name}</h4>
-                  <p className="text-xs text-gray-500 mt-1">{rev.loc}</p>
+                  <h4 className="font-semibold text-sm sm:text-base">{rev.name}</h4>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">{rev.loc}</p>
                 </div>
               </div>
               <div className="flex items-center gap-1 mb-2 text-[#F3C15F]">
-                <span className="text-sm font-bold text-gray-300 mr-2">{rev.rating}</span>
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
+                <span className="text-xs sm:text-sm font-bold text-gray-300 mr-2">{rev.rating}</span>
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
                 "{rev.text}"
               </p>
             </div>
@@ -76,25 +76,25 @@ export default function Testimonials() {
         </div>
 
         {/* Track 2 */}
-        <div className="flex w-max animate-marquee-reverse gap-6">
+        <div className="flex w-max animate-marquee-reverse gap-4 sm:gap-6">
           {duplicatedReviews2.map((rev, i) => (
-            <div key={`t2-${i}`} className="w-[350px] md:w-[450px] flex-shrink-0 bg-[#0c0c0c] border border-[--color-border] rounded-2xl p-5 text-white text-left shadow-md hover:border-white/20 transition-colors">
-              <div className="flex items-center gap-3 mb-3">
-                <img src={`https://i.pravatar.cc/100?img=${(i % 10) + 20}`} alt={rev.name} className="w-10 h-10 rounded-full object-cover" />
+            <div key={`t2-${i}`} className="w-[240px] sm:w-[350px] md:w-[450px] h-[180px] sm:h-[220px] md:h-auto flex-shrink-0 bg-[#0c0c0c] border border-[--color-border] rounded-2xl p-4 sm:p-5 text-white text-left shadow-md hover:border-white/20 transition-colors overflow-hidden">
+              <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                <img src={`https://i.pravatar.cc/100?img=${(i % 10) + 20}`} alt={rev.name} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover" />
                 <div>
-                  <h4 className="font-semibold">{rev.name}</h4>
-                  <p className="text-xs text-gray-500 mt-1">{rev.loc}</p>
+                  <h4 className="font-semibold text-sm sm:text-base">{rev.name}</h4>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">{rev.loc}</p>
                 </div>
               </div>
               <div className="flex items-center gap-1 mb-2 text-[#F3C15F]">
-                <span className="text-sm font-bold text-gray-300 mr-2">{rev.rating}</span>
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
+                <span className="text-xs sm:text-sm font-bold text-gray-300 mr-2">{rev.rating}</span>
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
+                <Star size={12} className="sm:w-3.5 sm:h-3.5" fill="currentColor" />
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
                 "{rev.text}"
               </p>
             </div>
@@ -103,8 +103,8 @@ export default function Testimonials() {
       </div>
 
       {/* Gradient Fades for edges */}
-      <div className="absolute top-0 left-0 w-24 md:w-64 h-full bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
-      <div className="absolute top-0 right-0 w-24 md:w-64 h-full bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 w-8 sm:w-16 md:w-48 h-full bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 right-0 w-8 sm:w-16 md:w-48 h-full bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
     </section>
   );
 }

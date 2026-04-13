@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import React, { useEffect, useRef, Suspense, useState, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -157,9 +157,9 @@ function ChampagneBottle({ eventRef, bottleXRef, bottleRollRef }) {
   const shake        = useRef(0);
   const normalized   = useMemo(() => normalizeScene(scene.clone(), 3.2), [scene]);
 
-  useFrame(({ clock }, dt) => {
+  useFrame((state, dt) => {
     if (!group.current) return;
-    const t = clock.elapsedTime;
+    const t = state.clock.elapsedTime;
 
     // Shake on sabrage impact
     if (eventRef.current.triggered && shake.current <= 0) shake.current = 0.55;
@@ -209,9 +209,9 @@ function Sword({ swordXRef, eventRef }) {
   const normalized = useMemo(() => normalizeScene(scene.clone(), 3.8), [scene]);
   const hitDone = useRef(false);
 
-  useFrame(({ clock }) => {
+  useFrame((state) => {
     if (!group.current) return;
-    const t = clock.elapsedTime;
+    const t = state.clock.elapsedTime;
 
     if (eventRef.current.triggered && !hitDone.current) hitDone.current = true;
 
@@ -236,16 +236,22 @@ function Sword({ swordXRef, eventRef }) {
 
 // ─── Scene ────────────────────────────────────────────────────────────────────
 function Scene({ swordXRef, eventRef, bottleXRef, bottleRollRef }) {
+  // Add responsivenes hook for field of view
+  const { viewport } = useThree();
+  const isMobile = viewport.width < 5; // Arbitrary threshold for mobile width
+
   return (
     <>
       <ambientLight intensity={0.55} />
       <directionalLight position={[3, 6, 5]} intensity={2.0} castShadow />
       <pointLight position={[-3, 2, 4]} intensity={1.3} color="#ffd680" />
       <spotLight position={[1, 8, 4]} angle={0.28} penumbra={0.9} intensity={1.8} />
-      <ChampagneBottle eventRef={eventRef} bottleXRef={bottleXRef} bottleRollRef={bottleRollRef} />
-      <Sword swordXRef={swordXRef} eventRef={eventRef} />
-      <CorkPop eventRef={eventRef} />
-      <ChampagneSpray eventRef={eventRef} />
+      <group scale={isMobile ? 0.6 : 1} position={[0, isMobile ? 0.4 : 0, 0]}>
+        <ChampagneBottle eventRef={eventRef} bottleXRef={bottleXRef} bottleRollRef={bottleRollRef} />
+        <Sword swordXRef={swordXRef} eventRef={eventRef} />
+        <CorkPop eventRef={eventRef} />
+        <ChampagneSpray eventRef={eventRef} />
+      </group>
       <Environment preset="night" />
     </>
   );
@@ -306,6 +312,7 @@ export default function PlayReel() {
 
   return (
     <div
+      id="experiences"
       ref={parent}
       style={{
         width: '100%', height: '100vh',
@@ -338,20 +345,22 @@ export default function PlayReel() {
       </div>
 
       {/* 3D Canvas */}
-      <Canvas
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}
-        camera={{ position: [0, 0.3, 7.5], fov: 42 }}
-        gl={{ antialias: true }}
-      >
-        <Suspense fallback={null}>
-          <Scene
-            swordXRef={swordXRef}
-            eventRef={eventRef}
-            bottleXRef={bottleXRef}
-            bottleRollRef={bottleRollRef}
-          />
-        </Suspense>
-      </Canvas>
+      <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0, touchAction: 'none' }}>
+        <Canvas
+          camera={{ position: [0, 0.3, 7.5], fov: 42 }}
+          gl={{ antialias: true }}
+          style={{ pointerEvents: 'none' }}
+        >
+          <Suspense fallback={null}>
+            <Scene
+              swordXRef={swordXRef}
+              eventRef={eventRef}
+              bottleXRef={bottleXRef}
+              bottleRollRef={bottleRollRef}
+            />
+          </Suspense>
+        </Canvas>
+      </div>
 
       {/* Bottom hint */}
       <p style={{

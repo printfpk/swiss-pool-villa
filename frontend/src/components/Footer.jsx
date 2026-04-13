@@ -3,10 +3,12 @@ import React, { useRef, useEffect, useState } from 'react';
 const VILLA_VIDEO = 'https://ik.imagekit.io/printf/swissvilla/video-6%20(1).mp4';
 
 const NAV_LINKS = [
-  { label: 'Villas',      href: '#' },
-  { label: 'Experiences', href: '#' },
-  { label: 'Gallery',     href: '#' },
-  { label: 'Book Now',    href: '#' },
+  { label: 'Home',      href: '#home' },
+  { label: 'Amenities', href: '#catalog' },
+  { label: 'Services',  href: '#history' },
+  { label: 'Experiences', href: '#experiences' },
+  { label: 'Reviews',   href: '#testimonials' },
+  { label: 'Location',  href: '#location' },
 ];
 
 const SOCIAL_LINKS = [

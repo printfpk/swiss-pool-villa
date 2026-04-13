@@ -30,7 +30,7 @@ const ServicesHistory = () => {
 
       const boxes = containerRef.current.querySelectorAll(".js-fill-history");
       boxes.forEach((box) => {
-        const posStart = window.innerHeight / 2;
+        const posStart = window.innerHeight / 1.2;
         const posEnd = posStart - box.offsetHeight;
         const currentPos = parseInt(box.getBoundingClientRect().top);
         let setY = 0;
@@ -43,7 +43,7 @@ const ServicesHistory = () => {
           box.classList.remove("active-feature");
         } else if (currentPos < posEnd) {
           setY = 100;
-          box.classList.remove("active-feature");
+          box.classList.add("active-feature"); // Keep active instead of removing
         }
 
         const fillElement = box.querySelector(".history-box__fill");
@@ -98,6 +98,7 @@ const ServicesHistory = () => {
 
   return (
     <div
+      id="history"
       className="relative pt-10 pb-20 lg:pt-20 lg:pb-60 overflow-hidden -mt-2 lg:-mt-4 bg-gradient-features"
       ref={containerRef}
     >
@@ -115,19 +116,23 @@ const ServicesHistory = () => {
             </div>
 
             {services.map((svc, index) => (
-              <div key={index} className="relative flex flex-col lg:flex-row items-start lg:items-center justify-between py-0 transition-opacity duration-500 group js-fill-history history-box overflow-hidden gap-4 lg:gap-6">
-                <div className="relative w-full lg:w-48 mb-2 lg:mb-0 flex flex-row lg:flex-col items-center lg:items-start gap-2 lg:gap-0 z-0 shrink-0">
-                  <div className="relative text-lg lg:text-[1.125rem] font-normal leading-[1.4] tracking-[.05em] font-sans text-gray-700 uppercase">Feature</div>
-                  <div className="relative text-5xl lg:text-[4.375rem] font-light leading-none font-serif italic text-gray-900">{svc.num}</div>
+              <div key={index} className="relative flex flex-col lg:flex-row items-start lg:items-center justify-between py-6 lg:py-0 transition-opacity duration-500 group js-fill-history history-box overflow-hidden gap-4 lg:gap-6 border-b border-gray-200/50 lg:border-none">
+                
+                {/* Number & Label */}
+                <div className="relative w-full lg:w-48 mb-2 lg:mb-0 flex flex-row lg:flex-col items-center lg:items-start gap-3 lg:gap-0 z-10 shrink-0 opacity-40 lg:opacity-100 transition-opacity duration-500 [&.active-feature_*]:opacity-100 group-[.active-feature]:opacity-100">
+                  <div className="relative text-lg lg:text-[1.125rem] font-normal leading-[1.4] tracking-[.05em] font-sans text-brand-black uppercase">Feature</div>
+                  <div className="relative text-5xl lg:text-[4.375rem] font-light leading-none font-serif italic text-brand-black">{svc.num}</div>
                 </div>
-                <div className="relative w-full lg:flex-1 text-base lg:text-[1.125rem] font-normal leading-[1.6] tracking-wide z-10 font-sans text-gray-800">
+
+                {/* Text Content */}
+                <div className="relative w-full lg:flex-1 text-base lg:text-[1.125rem] font-normal leading-[1.6] tracking-wide z-10 font-sans text-gray-800 opacity-40 lg:opacity-100 transition-all duration-700 translate-y-4 lg:translate-y-0 group-[.active-feature]:opacity-100 group-[.active-feature]:translate-y-0">
                   <p>
                     {svc.title}
                   </p>
                 </div>
 
-                {/* Image placed naturally at the end for desktop */}
-                <div className="relative w-full lg:w-[24rem] h-60 lg:h-72 shrink-0 rounded-[1.25rem] lg:scale-95 lg:opacity-0 transition-all duration-500 in-[.active-feature]:lg:scale-100 in-[.active-feature]:lg:opacity-100 overflow-hidden shadow-lg lg:shadow-xl z-20 history-box__img">
+                {/* Mobile Image Overlay / Desktop Image Block */}
+                <div className="relative w-full lg:w-[24rem] h-60 lg:h-72 shrink-0 rounded-[1.25rem] scale-95 opacity-0 transition-all duration-700 ease-out group-[.active-feature]:scale-100 group-[.active-feature]:opacity-100 overflow-hidden shadow-lg lg:shadow-xl z-20 history-box__img">
                   <picture>
                     <source srcSet={svc.img} media="(max-width: 767px)" />
                     <source srcSet={svc.img} media="(max-width: 992px)" />

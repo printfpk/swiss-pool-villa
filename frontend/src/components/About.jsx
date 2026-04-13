@@ -188,11 +188,11 @@ const About = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100]"
+              className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center md:justify-start"
             >
-              <div className={`fixed top-[.375rem] bottom-[.375rem] flex flex-col p-[2.5rem_.75rem_2.5rem_7.5rem] transition-all duration-500 z-[101] pointer-events-auto opacity-100 left-1/2 md:left-[12.5vw] w-[95vw] md:w-[41.6667vw] -translate-x-1/2 md:translate-x-0 before:absolute before:bg-white before:top-0 before:left-0 before:w-full before:h-full before:rounded-[.625rem] before:-z-10`}>
+              <div className="fixed md:top-[.375rem] md:bottom-[.375rem] flex flex-col p-6 pt-12 md:p-[2.5rem_.75rem_2.5rem_7.5rem] transition-all duration-500 z-[101] pointer-events-auto opacity-100 w-[95vw] h-[90vh] md:h-auto md:w-[41.6667vw] md:left-[12.5vw] md:-translate-x-0 bg-white md:bg-transparent rounded-2xl md:rounded-none overflow-y-auto md:overflow-visible before:absolute before:bg-white before:top-0 before:left-0 before:w-full before:h-full before:rounded-[.625rem] before:-z-10 md:before:block before:hidden shadow-2xl md:shadow-none">
 
-                <div className="absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col gap-3 justify-center items-center bg-white p-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] border-4 border-white z-[110]">
+                <div className="fixed md:absolute bottom-6 right-1/2 translate-x-1/2 md:translate-x-1/2 md:top-1/2 md:bottom-auto md:right-0 md:-translate-y-1/2 flex flex-row md:flex-col gap-4 md:gap-3 justify-center items-center bg-white p-3 md:p-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] border-4 border-white z-[110]">
                   <div onClick={prevModal} className="relative bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center w-[2.75rem] h-[2.75rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer hover:scale-105 hover:shadow-lg">
                     <ChevronLeft size={24} />
                   </div>
@@ -201,7 +201,7 @@ const About = () => {
                   </div>
                 </div>
 
-                <div onClick={closeModal} className="absolute bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center top-[2.5rem] right-[2.5rem] w-[2.5rem] h-[2.5rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer z-50 hover:scale-105 hover:shadow-lg">
+                <div onClick={closeModal} className="absolute bg-gradient-to-br from-[#eeb992] to-[#e6a87c] flex items-center justify-center top-3 right-3 md:top-[2.5rem] md:right-[2.5rem] w-[2.5rem] h-[2.5rem] text-white text-[1.5rem] rounded-full shadow-md transition-all duration-500 cursor-pointer z-50 hover:scale-105 hover:shadow-lg">
                   <X size={20} />
                 </div>
 
@@ -212,23 +212,23 @@ const About = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
                     transition={{ duration: 0.4 }}
-                    className="relative flex flex-col max-w-[27.5rem] height-full pr-[2.5rem] overflow-y-auto z-10 text-[#1c1b1d]"
+                    className="relative flex flex-col max-w-full md:max-w-[27.5rem] h-auto md:h-full pb-20 md:pb-0 pr-0 md:pr-[2.5rem] overflow-y-visible md:overflow-y-auto z-10 text-[#1c1b1d] mt-48 md:mt-0"
                   >
-                    <AnimatedText text={services[activeModal].category} className="text-[1rem] font-medium leading-[1.4] tracking-[.01rem] mb-[.75rem] text-gray-500" delay={0.1} />
-                    <AnimatedText text={services[activeModal].title} className="relative text-[1.875rem] font-medium leading-[1.3] mb-[2rem]" delay={0.2} />
+                    <AnimatedText text={services[activeModal].category} className="text-sm md:text-[1rem] font-medium leading-[1.4] tracking-[.01rem] mb-2 md:mb-[.75rem] text-gray-500" delay={0.1} />
+                    <AnimatedText text={services[activeModal].title} className="relative text-2xl md:text-[1.875rem] font-medium leading-[1.3] mb-6 md:mb-[2rem]" delay={0.2} />
 
-                    <div className="text-[1.125rem] font-medium leading-[1.4] tracking-[.01rem] mb-[2.5rem]">
-                      <div className="mb-[1rem]">
+                    <div className="text-base md:text-[1.125rem] font-normal md:font-medium leading-[1.5] tracking-[.01rem] mb-[2.5rem]">
+                      <div className="mb-4 md:mb-[1rem]">
                         <AnimatedText text={services[activeModal].text} speed={0.02} delay={0.3} />
                       </div>
-                      <ul className="pl-[1.25rem] mb-[1rem] list-disc marker:text-[#2b9705]">
+                      <ul className="pl-5 md:pl-[1.25rem] mb-4 md:mb-[1rem] list-disc marker:text-[#2b9705] space-y-2">
                         {services[activeModal].features.map((feat, i) => (
-                          <li key={i} className="mb-[.5rem]">
+                          <li key={i} className="mb-1 md:mb-[.5rem]">
                             <AnimatedText text={feat} speed={0.02} delay={0.4 + i * 0.1} />
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-[1rem]">
+                      <div className="mt-4 md:mt-[1rem]">
                         <AnimatedText text={services[activeModal].footer} speed={0.02} delay={0.5 + services[activeModal].features.length * 0.1} />
                       </div>
                     </div>
@@ -236,7 +236,7 @@ const About = () => {
                 </AnimatePresence>
 
                 {/* Modal background image */}
-                <div className="absolute top-[.375rem] bottom-[.375rem] right-[.375rem] w-[45vw] md:w-[41.6667vw] translate-x-full rounded-[.625rem] overflow-hidden -z-10 shadow-lg">
+                <div className="absolute top-0 right-0 left-0 h-48 md:bottom-[.375rem] md:top-[.375rem] md:left-auto md:right-[.375rem] md:h-auto w-full md:w-[41.6667vw] md:translate-x-full rounded-t-2xl md:rounded-[.625rem] overflow-hidden -z-10 shadow-md md:shadow-lg">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={`img-${activeModal}`}

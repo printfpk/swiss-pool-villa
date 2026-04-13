@@ -29,8 +29,8 @@ function WineGlass() {
   const group = useRef();
   const normalized = useMemo(() => normalizeScene(scene.clone(), 2.4), [scene]);
 
-  useFrame(({ clock }) => {
-    if (group.current) group.current.rotation.y = clock.elapsedTime * 0.28;
+  useFrame((state) => {
+    if (group.current) group.current.rotation.y = state.clock.elapsedTime * 0.28;
   });
 
   return (
@@ -46,10 +46,10 @@ function CocktailUmbrella() {
   const group = useRef();
   const normalized = useMemo(() => normalizeScene(scene.clone(), 1.1), [scene]);
 
-  useFrame(({ clock }) => {
+  useFrame((state) => {
     if (!group.current) return;
-    group.current.rotation.y = clock.elapsedTime * 0.28;
-    group.current.position.y = 1.0 + Math.sin(clock.elapsedTime * 0.9) * 0.04;
+    group.current.rotation.y = state.clock.elapsedTime * 0.28;
+    group.current.position.y = 1.0 + Math.sin(state.clock.elapsedTime * 0.9) * 0.04;
   });
 
   return (
@@ -82,10 +82,10 @@ function SpinningUmbrella() {
   const group = useRef();
   const normalized = useMemo(() => normalizeScene(scene.clone(), 1.8), [scene]);
 
-  useFrame(({ clock }) => {
+  useFrame((state) => {
     if (!group.current) return;
-    group.current.rotation.y = clock.elapsedTime * 2.2;
-    group.current.rotation.z = Math.sin(clock.elapsedTime * 2.4) * 0.1;
+    group.current.rotation.y = state.clock.elapsedTime * 2.2;
+    group.current.rotation.z = Math.sin(state.clock.elapsedTime * 2.4) * 0.1;
   });
 
   return (
@@ -210,6 +210,7 @@ export default function Location() {
 
       {/* ── Location section ─────────────────────────────────────────────── */}
       <section
+        id="location"
         ref={sectionRef}
         className="py-24 px-6 md:px-12 max-w-[1400px] mx-auto [&_*]:!cursor-none"
         style={{ cursor: "none" }}

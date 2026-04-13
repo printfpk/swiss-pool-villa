@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="bg-white text-[--color-text-main] font-sans selection:bg-[--color-brand] selection:text-white cursor-none">
+    <div className="bg-white text-[--color-text-main] font-sans selection:bg-[--color-brand] selection:text-white cursor-none overflow-x-hidden max-w-[100vw] w-full">
       <CustomCursor />
       <Navbar />
       <Hero />
