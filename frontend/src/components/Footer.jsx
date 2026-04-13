@@ -64,6 +64,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="contact"
       ref={rootRef}
       style={{
         /* Very dark near-black to blend with video section above */

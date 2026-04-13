@@ -121,7 +121,10 @@ const About = () => {
       <div className="container mx-auto max-w-[1440px] px-[1.5rem] lg:px-[6.875rem]">
 
         {/* Container background block */}
-        <div className="relative bg-[#fffce3] p-[2.5rem] lg:p-[4.375vw] rounded-[1.25rem] lg:rounded-[1.04vw]">
+        <div 
+          className="relative p-[2.5rem] lg:p-[4.375vw] rounded-[1.25rem] lg:rounded-[1.04vw]"
+          style={{ background: 'linear-gradient(135deg, #d5d4cf, #e0dfdb, #ebccc5, #edb891)' }}
+        >
 
           <div className="flex justify-between items-center mb-[2rem] lg:mb-[3.33vw]">
             <div className="text-[2.5rem] lg:text-[2.6vw] font-medium text-[#1c1b1d]">Amenities</div>
@@ -154,19 +157,21 @@ const About = () => {
                 onClick={() => openModal(index)}
                 className="group relative text-[#fffce3] rounded-[1.25rem] block cursor-pointer"
               >
-                <div className="absolute top-0 left-0 w-full h-[55vw] lg:h-[28vw] transition-[height] duration-500 group-hover:h-full after:content-[''] after:absolute after:inset-0 after:border-[2px] after:border-[#2b9705] after:rounded-[1.25rem] after:shadow-[0_0_1rem_0_#2b9705] after:pointer-events-none after:opacity-0 group-focus-visible:after:opacity-100">
+                <div className="absolute top-0 left-0 w-full h-[75vw] sm:h-[55vw] lg:h-[28vw] transition-[height] duration-500 group-hover:h-full after:content-[''] after:absolute after:inset-0 after:border-[2px] after:border-[#2b9705] after:rounded-[1.25rem] after:shadow-[0_0_1rem_0_#2b9705] after:pointer-events-none after:opacity-0 group-focus-visible:after:opacity-100 z-0">
                   <div className="absolute top-0 left-0 w-full h-full bg-[#78797e] rounded-[1.25rem] overflow-hidden will-change-transform">
                     <img
                       src={service.img}
                       alt={service.title}
                       className="absolute top-0 left-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
+                    {/* Gradient overlay to ensure text is always readable */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
                   </div>
                 </div>
 
-                <div className="relative flex flex-col justify-end h-[55vw] lg:h-[28vw] p-[1.875rem]">
-                  <div className="relative text-[1rem] font-medium leading-[1.4] tracking-[.01rem] mb-[.75rem]">{service.category}</div>
-                  <div className="relative text-[1.875rem] font-medium leading-[1.3]">{service.title}</div>
+                <div className="relative flex flex-col justify-end h-[75vw] sm:h-[55vw] lg:h-[28vw] p-[1.25rem] sm:p-[1.875rem] z-20">
+                  <div className="relative text-[0.875rem] sm:text-[1rem] font-medium leading-[1.4] tracking-[.01rem] mb-[.5rem] sm:mb-[.75rem]">{service.category}</div>
+                  <div className="relative text-[1.5rem] sm:text-[1.875rem] font-medium leading-[1.3]">{service.title}</div>
                 </div>
 
                 <div className="relative py-[2.1875rem] pt-[1.5rem] transition-[padding] duration-500 group-hover:px-[1.875rem]">

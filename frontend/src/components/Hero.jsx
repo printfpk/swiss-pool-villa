@@ -84,12 +84,12 @@ export default function Hero() {
         <Slide direction="up" delay={0.5}>
           <div className="flex justify-center pointer-events-auto">
             <div className="flex items-center w-full justify-between sm:justify-center shadow-[0_8px_30px_rgb(0,0,0,0.6)] rounded-full border border-white/20 bg-black/40 backdrop-blur-xl p-1.5 sm:p-2 transition duration-300 hover:bg-black/60">
-              <button className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium border-r border-white/30 whitespace-nowrap hover:text-[#C9A646] transition-colors flex-1 text-center">
+              <a href="#contact" className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-medium border-r border-white/30 whitespace-nowrap hover:text-[#C9A646] transition-colors flex-1 text-center block">
                 <FlipText>Book Now</FlipText>
-              </button>
-              <button className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-normal opacity-90 whitespace-nowrap hover:text-[#C9A646] transition-colors flex-1 text-center">
+              </a>
+              <a href="#catalog" className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-normal opacity-90 whitespace-nowrap hover:text-[#C9A646] transition-colors flex-1 text-center block">
                 <FlipText>Explore</FlipText>
-              </button>
+              </a>
               <div className="bg-gradient-to-br from-[#ff6b81] via-[#e0003c] to-[#b0002e] text-white p-2 sm:p-3 rounded-full flex items-center justify-center ml-1 sm:ml-2 cursor-pointer hover:scale-105 transition-all shrink-0">
                 <Search size={16} className="sm:w-[18px] sm:h-[18px]" />
               </div>
