@@ -7,7 +7,6 @@ import ServicesHistory from "./components/ServicesHistory";
 import PlayReel from "./components/PlayReel";
 import Testimonials from "./components/Testimonials";
 import Location from "./components/Location";
-import Booking from "./components/Booking";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -21,7 +20,6 @@ export default function App() {
       <PlayReel />
       <Testimonials />
       <Location />
-      <Booking />
       <Footer />
     </div>
   );
